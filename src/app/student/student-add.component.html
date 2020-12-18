@@ -1,0 +1,24 @@
+
+<form [formGroup]="studentForm">
+    <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control w-100" 
+            formControlName="name" 
+            name="name" 
+            placeholder="Name">
+    </div>
+    <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control w-100" 
+            formControlName="id" 
+            name="id" 
+            placeholder="Age"
+            [readOnly]="isEdit">
+    </div>
+    
+  </form>
+  <button (click)="add()" *ngIf="!isEdit">Add</button>
+  <button (click)="edit()" *ngIf="isEdit">Edit</button>
+  <button (click)="resetForm()" *ngIf="!isEdit">Reset</button>
