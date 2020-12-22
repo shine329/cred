@@ -26,6 +26,8 @@ export class StudentAddComponent implements OnInit  {
     this.studentForm = new FormGroup({
       name: new FormControl(''),
       id: new FormControl(''),
+      male: new FormControl(''),
+      female: new FormControl('')
       
       
     })
@@ -33,13 +35,17 @@ export class StudentAddComponent implements OnInit  {
         console.log(param)
         if(param && param.id){
           let student = this.studentService.getStudent(param.id);
+          if(param && param.male){
+            let student = this.studentService.getStudent(param.male);
+          
+
           if(student){
             this.studentForm.setValue(student);
             this.isEdit = true;
             }
           else this.router.navigate(['/students'])
         }
-      })
+      }})
   }
 
   resetForm(){
